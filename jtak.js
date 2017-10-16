@@ -291,7 +291,7 @@ function repText(id) {
 		b = b.replace(/<b rel="catatan">(.*?)<\/b>/ig, "<br/><span class='catatan'>$1<\/span><br/>");
         b = b.replace(/<b rel="h3">(.*?)<\/b>/ig, "<b class='komen-holder'>$1<\/b><br/>");
 		b = b.replace(/<i rel="note">(.*?)<\/i>/ig, "<br/><cite class='peringatan'>$1<\/cite><br/>");
-		b = b.replace(/<i rel="taut">(.*?)<\/i>/ig, "<div id='$1' class='comotan'><a href='$1' class='allow'>$1<\/a><\/div>");
+		b = b.replace(/<i rel="taut">(.*?)<\/i>/ig, "<div id='$1' class='comotan'>$1<\/div>");
         b = b.replace(/\[code\](.*?)\[\/code\]/ig, "<code>$1<\/code>");
         b = b.replace(/\[pre\](.*?)\[\/pre\]/ig, "<pre>$1<\/pre>");
         b = b.replace(/\[blockquote\](.*?)\[\/blockquote\]/ig, "<span class='blockquote'>$1<\/span>");
@@ -366,7 +366,11 @@ $('#comment_block p, #comments dd').each(function() {
     $('iframe.video:not([src*="youtube.com/embed"])')
         .removeAttr('src')
         .css('background', '#900 url(http://hompimpa.googlecode.com/svn/trunk/personal/images/iframe-fallback.png) no-repeat 50% 50%');
-	
+	$('div.comotan').each(function() {
+			$(this).children().on(click, function() {
+				$(this).load($(this).children().attr('href') $(this).attr('id'));
+			});
+		});
 });
 
 //filter komentar
