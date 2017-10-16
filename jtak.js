@@ -366,17 +366,7 @@ $('#comment_block p, #comments dd').each(function() {
     $('iframe.video:not([src*="youtube.com/embed"])')
         .removeAttr('src')
         .css('background', '#900 url(http://hompimpa.googlecode.com/svn/trunk/personal/images/iframe-fallback.png) no-repeat 50% 50%');
-	$('i[rel="comot"]').replaceWith(this, function() {
-		var comida = $(this).text(),
-		    comid = comida.split('#'),
-			comidid = comid[1];
-        return $('<div id="' + comidid + '" class="comotan"><a href="' + $(this).text() + '">' + $(this).text() + '</a></div>');
-		$('div.comotan').each(function() {
-			$(this).children().on(click, function() {
-				$(this).load($(this).children().attr('href') $(this).attr('id'));
-			});
-		});
-    });
+	
 });
 
 //filter komentar
