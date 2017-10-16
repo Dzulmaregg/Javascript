@@ -424,6 +424,7 @@ $('#comment_block').find('a.allow').filter(function() {
 			$(this).closest('.comment_body').html('<div class="loader" style="height:100px;background-position:50% 50%;"></div>').load(a2[0].split('?')[0]+' #'+a2[1], function() {
 				$(this).children().replaceWith($(this).children().html()+'<br><cite class="note">Tautan sumber: <a class="allow" href="'+a1+'">'+a1+'</a></cite><br>');
 				$(this).find('.comment_child').remove();
+				repText('comment_block');
 			});
 			return false;
 		});
