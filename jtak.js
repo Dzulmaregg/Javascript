@@ -245,7 +245,7 @@ function blockLinks(parentID, children) {
 									 .replace(/&lt;h([1-6])&gt;/ig,"&lt;b rel=\"h$1\"&gt;")
 									 .replace(/&lt;\/(code|pre)&gt;/ig,"&lt;\/i&gt;")
 									 .replace(/&lt;\/(blockquote|h[1-6])&gt;/ig,"&lt;\/b&gt;");
-            content[i].innerHTML = "<mark><a href='/p/komentar.html#live-link' title='peraturan berkomentar'>No live link!!!</a></mark> Komentar Anda telah dihapus/disembunyikan untuk alasan keamanan dan kenyamanan pembaca lain. Kemungkinan hal ini terjadi karena Anda menuliskan komentar disertai dengan tautan aktif atau tautan-tautan yang tidak diperlukan pembaca/tidak sesuai dengan diskusi. Tapi jika bukan itu masalahnya, Saya harap Anda bersedia mencoba menuliskan komentar Anda kembali tanpa mencantumkan tautan/link aktif yang tidak diperlukan. Berikut ini adalah salinan yang mungkin Anda perlukan dari komentar lama yang baru Anda tuliskan sebelum ini:<br/><textarea  spellcheck='off'>" + salinan + "</textarea><br/>Terima kasih atas partisipasinya di dalam blog ini.";
+            content[i].innerHTML = "<mark><a href='/p/komentar.html#live-link' title='peraturan berkomentar'>No live link!!!</a></mark> Komentar Anda telah dihapus/disembunyikan untuk alasan keamanan dan kenyamanan pembaca lain. Berikut isi komentar Anda sebelumnya:<br/><textarea  spellcheck='off'>" + salinan + "</textarea><br/>";
             content[i].className = "spammer-detected";
         }
 		
@@ -291,7 +291,7 @@ function repText(id) {
 		b = b.replace(/<b rel="catatan">(.*?)<\/b>/ig, "<br/><span class='catatan'>$1<\/span><br/>");
         b = b.replace(/<b rel="h3">(.*?)<\/b>/ig, "<b class='komen-holder'>$1<\/b><br/>");
 		b = b.replace(/<i rel="note">(.*?)<\/i>/ig, "<br/><cite class='peringatan'>$1<\/cite><br/>");
-		b = b.replace(/<i rel="taut">(.*?)<\/i>/ig, "<div id='$1' class='allow'>$1<\/div>");
+		b = b.replace(/<i rel="taut">(.*?)<\/i>/ig, "<a href='$1' class='allow'>$1<\/a>");
         b = b.replace(/\[code\](.*?)\[\/code\]/ig, "<code>$1<\/code>");
         b = b.replace(/\[pre\](.*?)\[\/pre\]/ig, "<pre>$1<\/pre>");
         b = b.replace(/\[blockquote\](.*?)\[\/blockquote\]/ig, "<span class='blockquote'>$1<\/span>");
@@ -416,8 +416,8 @@ $('#comment_block').textWalk(function() {
     }
 });
 
-$('.para').find('a.allow').filter(function() {
-			return /(psd-egg\.blogspot\.com|psd-egg\.blogspot\.com)?.*?\/.*?\?showComment\=[0-9]+\#c[0-9]+/.test(this.href);
+$('#comment_block').find('a.allow').filter(function() {
+			return /(adlmruz\.blogspot\.com|adlmruz\.blogspot\.com)?.*?\/.*?\?showComment\=[0-9]+\#c[0-9]+/.test(this.href);
 		}).attr({'title':'Klik untuk memuat jawaban/pertanyaan sejenis','oncontextmenu':'return false'}).on("click", function(a1,a2) {
 			a1 = this.href;
 			a2 = a1.split('#');
